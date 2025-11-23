@@ -9,44 +9,43 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
         }
 
         body {
-            background-color: #f5f7fa;
+            background-color: #f0f0f0;
             color: #333;
-            line-height: 1.6;
             padding: 20px;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
         }
 
         h1 {
-            color: #2c3e50;
-            margin-bottom: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #444;
         }
 
         .btn-open-form {
-            background: #3498db;
+            background: #4CAF50;
             color: white;
             border: none;
-            padding: 12px 24px;
+            padding: 10px 20px;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
-            transition: background 0.3s;
+            display: block;
+            margin: 0 auto 20px;
         }
 
         .btn-open-form:hover {
-            background: #2980b9;
+            background: #45a049;
         }
 
         .popup-overlay {
@@ -55,48 +54,38 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
             justify-content: center;
             align-items: center;
             z-index: 1000;
             padding: 20px;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s;
         }
 
         .popup-overlay.active {
-            opacity: 1;
-            visibility: visible;
+            display: flex;
         }
 
         .form-container {
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
             width: 100%;
             max-width: 500px;
             max-height: 90vh;
             overflow-y: auto;
-            transform: scale(0.9);
-            transition: transform 0.3s;
-        }
-
-        .popup-overlay.active .form-container {
-            transform: scale(1);
         }
 
         .form-header {
-            padding: 20px;
-            border-bottom: 1px solid #eee;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: #f5f5f5;
         }
 
         .form-header h2 {
-            color: #2c3e50;
+            color: #444;
         }
 
         .btn-close {
@@ -104,7 +93,7 @@
             border: none;
             font-size: 24px;
             cursor: pointer;
-            color: #7f8c8d;
+            color: #777;
         }
 
         .form-body {
@@ -112,28 +101,21 @@
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         label {
             display: block;
             margin-bottom: 5px;
-            font-weight: 500;
-            color: #2c3e50;
+            font-weight: bold;
         }
 
         input, textarea {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
+            padding: 8px;
+            border: 1px solid #ccc;
             border-radius: 4px;
-            font-size: 16px;
-            transition: border 0.3s;
-        }
-
-        input:focus, textarea:focus {
-            border-color: #3498db;
-            outline: none;
+            font-size: 14px;
         }
 
         textarea {
@@ -157,57 +139,47 @@
             font-size: 14px;
         }
 
-        .checkbox-group a {
-            color: #3498db;
-            text-decoration: none;
-        }
-
-        .checkbox-group a:hover {
-            text-decoration: underline;
-        }
-
         .btn-submit {
-            background: #2ecc71;
+            background: #4CAF50;
             color: white;
             border: none;
-            padding: 12px 24px;
+            padding: 10px 20px;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
             width: 100%;
-            transition: background 0.3s;
         }
 
         .btn-submit:hover {
-            background: #27ae60;
+            background: #45a049;
         }
 
         .btn-submit:disabled {
-            background: #95a5a6;
+            background: #cccccc;
             cursor: not-allowed;
         }
 
         .message {
             padding: 10px;
             border-radius: 4px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-align: center;
             display: none;
         }
 
         .message.success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+            background: #dff0d8;
+            color: #3c763d;
+            border: 1px solid #d6e9c6;
         }
 
         .message.error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
+            background: #f2dede;
+            color: #a94442;
+            border: 1px solid #ebccd1;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
             .form-container {
                 max-height: 100vh;
                 height: 100vh;
@@ -223,15 +195,9 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Демонстрация формы обратной связи</h1>
-            <p>Нажмите кнопку ниже, чтобы открыть форму обратной связи</p>
-            <button class="btn-open-form" id="openFormBtn">Открыть форму</button>
-        </header>
-        
-        <main>
-            <p>Это демонстрационная страница для показа работы формы обратной связи в попапе.</p>
-        </main>
+        <h1>Демонстрация формы обратной связи</h1>
+        <button class="btn-open-form" id="openFormBtn">Открыть форму</button>
+        <p>Это простая демонстрационная страница для показа работы формы обратной связи в попапе.</p>
     </div>
 
     <div class="popup-overlay" id="popupOverlay">
@@ -273,7 +239,7 @@
                         <div class="checkbox-group">
                             <input type="checkbox" id="privacyPolicy" name="privacyPolicy" required>
                             <label for="privacyPolicy">
-                                Я согласен с <a href="#" target="_blank">политикой обработки персональных данных</a> *
+                                Я согласен с политикой обработки персональных данных *
                             </label>
                         </div>
                     </div>
@@ -297,8 +263,9 @@
             // Ключ для LocalStorage
             const STORAGE_KEY = 'feedbackFormData';
             
-            // URL для отправки формы (замените на ваш URL от formcarry.com или другого сервиса)
-            const FORM_SUBMIT_URL = 'https://formcarry.com/s/YOUR_FORM_ID_HERE';
+            // URL для отправки формы (замените на реальный URL от сервиса для форм)
+            // Для демонстрации используем заглушку
+            const FORM_SUBMIT_URL = 'https://jsonplaceholder.typicode.com/posts';
             
             // Открытие формы
             openFormBtn.addEventListener('click', function() {
@@ -326,7 +293,7 @@
             // Обработка нажатия кнопки "Назад" в браузере
             window.addEventListener('popstate', function(e) {
                 if (popupOverlay.classList.contains('active')) {
-                    closeForm(false); // false - не добавлять запись в историю
+                    closeForm(false);
                 }
             });
             
@@ -355,37 +322,49 @@
             
             // Функция сохранения данных формы в LocalStorage
             function saveFormData() {
-                const formData = {
-                    fullName: document.getElementById('fullName').value,
-                    email: document.getElementById('email').value,
-                    phone: document.getElementById('phone').value,
-                    organization: document.getElementById('organization').value,
-                    message: document.getElementById('message').value,
-                    privacyPolicy: document.getElementById('privacyPolicy').checked
-                };
-                
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+                try {
+                    const formData = {
+                        fullName: document.getElementById('fullName').value,
+                        email: document.getElementById('email').value,
+                        phone: document.getElementById('phone').value,
+                        organization: document.getElementById('organization').value,
+                        message: document.getElementById('message').value,
+                        privacyPolicy: document.getElementById('privacyPolicy').checked
+                    };
+                    
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+                } catch (e) {
+                    console.log('Не удалось сохранить данные формы: ', e);
+                }
             }
             
             // Функция восстановления данных формы из LocalStorage
             function restoreFormData() {
-                const savedData = localStorage.getItem(STORAGE_KEY);
-                
-                if (savedData) {
-                    const formData = JSON.parse(savedData);
+                try {
+                    const savedData = localStorage.getItem(STORAGE_KEY);
                     
-                    document.getElementById('fullName').value = formData.fullName || '';
-                    document.getElementById('email').value = formData.email || '';
-                    document.getElementById('phone').value = formData.phone || '';
-                    document.getElementById('organization').value = formData.organization || '';
-                    document.getElementById('message').value = formData.message || '';
-                    document.getElementById('privacyPolicy').checked = formData.privacyPolicy || false;
+                    if (savedData) {
+                        const formData = JSON.parse(savedData);
+                        
+                        document.getElementById('fullName').value = formData.fullName || '';
+                        document.getElementById('email').value = formData.email || '';
+                        document.getElementById('phone').value = formData.phone || '';
+                        document.getElementById('organization').value = formData.organization || '';
+                        document.getElementById('message').value = formData.message || '';
+                        document.getElementById('privacyPolicy').checked = formData.privacyPolicy || false;
+                    }
+                } catch (e) {
+                    console.log('Не удалось восстановить данные формы: ', e);
                 }
             }
             
             // Функция очистки данных формы в LocalStorage
             function clearFormData() {
-                localStorage.removeItem(STORAGE_KEY);
+                try {
+                    localStorage.removeItem(STORAGE_KEY);
+                } catch (e) {
+                    console.log('Не удалось очистить данные формы: ', e);
+                }
                 
                 // Сбрасываем форму
                 feedbackForm.reset();
@@ -398,12 +377,22 @@
                 submitBtn.textContent = 'Отправка...';
                 
                 // Собираем данные формы
-                const formData = new FormData(feedbackForm);
+                const formData = {
+                    fullName: document.getElementById('fullName').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    organization: document.getElementById('organization').value,
+                    message: document.getElementById('message').value,
+                    privacyPolicy: document.getElementById('privacyPolicy').checked
+                };
                 
                 // Отправляем данные через fetch
                 fetch(FORM_SUBMIT_URL, {
                     method: 'POST',
-                    body: formData
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
                 })
                 .then(response => {
                     if (!response.ok) {
